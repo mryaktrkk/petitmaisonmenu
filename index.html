@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Maison - Café & Kids Play Dijital Menü</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2E5A44; 
+            --light-green: #EAF2EE;
+            --accent-cream: #FDFBF7;
+            --text-dark: #1A2620;
+            --text-muted: #60756B;
+            --bear-brown: #BC8F60; /* Fotoğraftaki tatlı ayıcık rengi */
+            --bear-light: #F3E1CE;
+            --bear-shirt: #E8B4B8; /* Ayıcığın çizgili kıyafet tonu */
+            --border-color: #D1DEC7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--accent-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* 🐻 Geliştirilmiş Çizgili Kıyafetli Sevimli Ayıcık İllüstrasyonu */
+        .bear-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 35px;
+            position: relative;
+            height: 110px;
+        }
+
+        .bear-character {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Kulaklar */
+        .bear-character::before, .bear-character::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: var(--bear-brown);
+            border-radius: 50%;
+            top: -5px;
+        }
+        .bear-character::before { left: 4px; box-shadow: inset -3px -2px 0 var(--bear-light); }
+        .bear-character::after { right: 4px; box-shadow: inset 3px -2px 0 var(--bear-light); }
+
+        /* Kafa */
+        .bear-head-main {
+            position: absolute;
+            width: 80px;
+            height: 70px;
+            background-color: var(--bear-brown);
+            border-radius: 50% 50% 46% 46%;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Gözler ve Pembe Yanaklar */
+        .bear-eyes {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #332211;
+            border-radius: 50%;
+            top: 26px;
+            left: 22px;
+            box-shadow: 30px 0 0 #332211;
+        }
+        .bear-cheeks {
+            position: absolute;
+            width: 10px;
+            height: 6px;
+            background-color: #FFAAA6;
+            border-radius: 50%;
+            top: 32px;
+            left: 12px;
+            opacity: 0.7;
+            box-shadow: 46px 0 0 #FFAAA6;
+        }
+
+        /* Ağız ve Burun Bölgesi */
+        .bear-snout {
+            position: absolute;
+            width: 34px;
+            height: 24px;
+            background-color: var(--bear-light);
+            border-radius: 50%;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .bear-snout::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 6px;
+            background-color: #332211;
+            border-radius: 50%;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Üst Header Alanı */
+        header {
+            text-align: center;
+            padding: 10px 20px 20px 20px;
+            background: linear-gradient(180deg, #E2ECE6 0%, var(--accent-cream) 100%);
+        }
+
+        .logo-title {
+            font-family: 'Marcellus', serif;
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .header-decor {
+            margin: 15px auto;
+            width: 100px;
+            height: 1px;
+            background-color: var(--primary-green);
+            position: relative;
+        }
+        .header-decor::after {
+            content: '🧸';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-cream);
+            padding: 0 8px;
+            font-size: 1rem;
+        }
+
+        /* Oyun Alanı Kartı */
+        .play-zone-container {
+            margin: 15px 20px 25px 20px;
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(46, 90, 68, 0.04);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .play-zone-container::before {
+            content: '🧸';
+            position: absolute;
+            font-size: 4.5rem;
+            opacity: 0.06;
+            right: -10px;
+            bottom: -10px;
+        }
+
+        .play-zone-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.4rem;
+            color: #A47B56;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .play-zone-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .play-cards {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .play-card {
+            flex: 1;
+            padding: 15px 10px;
+            border-radius: 16px;
+            background: #FDFBF7;
+            border: 1px dashed var(--border-color);
+        }
+        .play-card.duration-30 { border-color: var(--bear-brown); }
+        .play-card.duration-60 { border-color: var(--primary-green); }
+
+        .card-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .card-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .play-notice {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: #F4F7F5;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        /* Kategori Navigasyonu */
+        .nav-scroll {
+            position: sticky;
+            top: 0;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(46, 90, 68, 0.05);
+        }
+
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0 20px;
+            gap: 8px;
+            scrollbar-width: none;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            background: white;
+            border: 1px solid rgba(46, 90, 68, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.active {
+            background-color: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(46, 90, 68, 0.15);
+        }
+
+        /* Menü İçerik Alanı */
+        .menu-container {
+            padding: 10px 20px 60px 20px;
+        }
+
+        .section-wrapper {
+            margin-bottom: 35px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '🐻';
+            font-size: 1.1rem;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .menu-items-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .item-card {
+            background: white;
+            padding: 16px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.01);
+            border: 1px solid rgba(46, 90, 68, 0.03);
+            position: relative;
+        }
+
+        /* İlave favori veya içerikli kartlar için özel ayıcık patisi */
+        .item-card.kids-fav::before {
+            content: '🐾';
+            position: absolute;
+            left: -6px;
+            top: -6px;
+            font-size: 1rem;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .item-price {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* Ekstra Kutusu */
+        .extra-box {
+            background: #F4F7F5;
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .extra-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        .extra-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        /* Alerjen Bilgilendirme */
+        .allergen-box {
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 15px;
+            margin-top: 25px;
+            text-align: center;
+            background: white;
+        }
+        .allergen-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        .allergen-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #E2ECE6;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .footer-insta {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bear-container">
+        <div class="bear-character">
+            <div class="bear-head-main">
+                <div class="bear-eyes"></div>
+                <div class="bear-cheeks"></div>
+                <div class="bear-snout"></div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-title">Petit Maison</div>
+        <div class="logo-subtitle">Café & Kids Play</div>
+        <div class="header-decor"></div>
+    </header>
+
+    <div class="play-zone-container">
+        <div class="play-zone-title">Oyun Alanı</div>
+        <div class="play-zone-subtitle">2 - 7 Yaş Çocuklar İçin</div>
+        <div class="play-cards">
+            <div class="play-card duration-30">
+                <div class="card-time">⏱ 30 Dakika</div>
+                <div class="card-price">250 ₺</div>
+            </div>
+            <div class="play-card duration-60">
+                <div class="card-time">⏱ 60 Dakika</div>
+                <div class="card-price">400 ₺</div>
+            </div>
+        </div>
+        <div class="play-notice">💁‍♀️ Oyun Ablası Eşliğinde Hizmet Verilmektedir.</div>
+    </div>
+
+    <div class="nav-scroll">
+        <div class="nav-tabs">
+            <button class="nav-btn active" onclick="scrollToSec('sicak-kahve')">☕ Sıcak Kahve</button>
+            <button class="nav-btn" onclick="scrollToSec('soguk-kahve')">🧊 Soğuk Kahve</button>
+            <button class="nav-btn" onclick="scrollToSec('soguk-icecek')">🍹 Soğuklar</button>
+            <button class="nav-btn" onclick="scrollToSec('tatlilar')">🍰 Tatlılar</button>
+            <button class="nav-btn" onclick="scrollToSec('kahvalti')">🍳 Kahvaltı & Kruvasan</button>
+        </div>
+    </div>
+
+    <main class="menu-container">
+
+        <section class="section-wrapper" id="sicak-kahve">
+            <h2 class="section-title">Sıcak İçecekler | Kahve</h2>
+            <div class="menu-items-grid">
+                <div class="item-card"><div class="item-header"><span class="item-title">Türk Kahvesi</span><span class="item-price">220 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Double Türk Kahvesi</span><span class="item-price">270 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Espresso</span><span class="item-price">160 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Double Espresso</span><span class="item-price">180 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Filtre Kahve</span><span class="item-price">210 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Americano</span><span class="item-price">220 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Cappuccino</span><span class="item-price">280 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Cortado</span><span class="item-price">250 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Flat White</span><span class="item-price">290 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Latte</span><span class="item-price">280 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Spanish Latte</span><span class="item-price">310 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Caramel Latte</span><span class="item-price">300 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Mocha</span><span class="item-price">310 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">White Chocolate Mocha</span><span class="item-price">310 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Macchiato</span><span class="item-price">310 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Sıcak Çikolata</span><span class="item-price">290 ₺</span></div></div>
+            </div>
+
+            <h2 class="section-title" style="margin-top:25px;">Sıcak İçecekler | Çay</h2>
+            <div class="menu-items-grid">
+                <div class="item-card"><div class="item-header"><span class="item-title">Türk Çayı</span><span class="item-price">90 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Türk Çayı Fincan</span><span class="item-price">130 ₺</span></div></div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" id="soguk-kahve">
+            <h2 class="section-title">Soğuk İçecekler | Kahve</h2>
+            <div class="menu-items-grid">
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Filtre</span><span class="item-price">280 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Filtre Sütlü</span><span class="item-price">310 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Americano</span><span class="item-price">280 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Latte</span><span class="item-price">320 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Caramel Latte</span><span class="item-price">330 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Vanilla Latte</span><span class="item-price">330 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Ice Spanish Latte</span><span class="item-price">330 ₺</span></div></div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" id="soguk-icecek">
+            <h2 class="section-title">Soğuk İçecekler</h2>
+            <div class="menu-items-grid">
+                <div class="item-card"><div class="item-header"><span class="item-title">Su</span><span class="item-price">60 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Soda</span><span class="item-price">90 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Limonata</span><span class="item-price">180 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Maiso</span><span class="item-price">290 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Churchill</span><span class="item-price">180 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Cool Lime</span><span class="item-price">280 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Berry Hibiscus</span><span class="item-price">280 ₺</span></div></div>
+            </div>
+
+            <div class="extra-box">
+                <div class="extra-title">Ekstra</div>
+                <div class="extra-row"><span>Süt</span><span>60 ₺</span></div>
+                <div class="extra-row"><span>Yulaf Sütü</span><span>60 ₺</span></div>
+                <div class="extra-row"><span>Badem Sütü</span><span>60 ₺</span></div>
+                <div class="extra-row"><span>Hindistan Cevizi Sütü</span><span>60 ₺</span></div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" id="tatlilar">
+            <h2 class="section-title">Tatlılar | Sweets</h2>
+            <div class="menu-items-grid">
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Cedric</span><span class="item-price">360 ₺</span></div>
+                    <div class="item-desc">Özel krema, akışkan Antep fıstığı dolgusu ve sütlü çikolata kaplamasıyla hazırlanan imza lezzetimiz.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Mango</span><span class="item-price">460 ₺</span></div>
+                    <div class="item-desc">Özel krema, yoğun mango dolgusu ve çikolata kaplamasının tropikal uyumu.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Coconut Mango</span><span class="item-price">480 ₺</span></div>
+                    <div class="item-desc">Çikolatalı kıtır kıtır taban, özel krema, mango dolgusu, sade pandispanya; sütlü çikolata, mango ve Hindistan cevizi ile tamamlanır.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">San Sebastian</span><span class="item-price">410 ₺</span></div>
+                    <div class="item-desc">Yoğun kıvamı ve hafif karamelize yüzeyiyle servis edilen klasik Bask Cheesecake.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Dubai Pasta</span><span class="item-price">470 ₺</span></div>
+                    <div class="item-desc">Kakaolu pandispanya, çıtır kadayıf ve Antep fıstığı ezmesinin özel kremayla buluşan eşsiz lezzeti.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Fıstık Pasta</span><span class="item-price">450 ₺</span></div>
+                    <div class="item-desc">Yumuşacık pandispanya arasında özel krema ve bol Antep fıstığıyla hazırlanan enfes pasta.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Çilekli Pasta</span><span class="item-price">430 ₺</span></div>
+                    <div class="item-desc">Sade pandispanya, özel krema ve çilek dolgusu; taze çileklerle zenrichleştirilmiş ferah lezzet.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Limon Pasta</span><span class="item-price">480 ₺</span></div>
+                    <div class="item-desc">Özel krema, limon dolgusu ve sade pandispanyanın çikolata kaplamasıyla buluştuğu hafif tat.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Pistachio Tart</span><span class="item-price">480 ₺</span></div>
+                    <div class="item-desc">Tereyağlı tart tabanı, özel krema and Antep fıstığı ezmesi; kavrulmuş fıstıklarla tamamlanır.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Lotus Tart</span><span class="item-price">410 ₺</span></div>
+                    <div class="item-desc">Tereyağlı Lotus bisküvi tabanı, özel krema, kakaolu pandispanya ve Lotus kremasıyla hazırlanır.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Lotus Magnolia</span><span class="item-price">430 ₺</span></div>
+                    <div class="item-desc">Kat kat özel krema, Lotus Biscoff lezzeti ve çıtır bisküviyle hazırlanan hafif magnolia.</div>
+                </div>
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Lotus Cookie</span><span class="item-price">370 ₺</span></div>
+                    <div class="item-desc">Yoğun Lotus Biscoff aromalı, dışı hafif çıtır, içi yumuşak el yapımı kurabiye.</div>
+                </div>
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Fıstık Cookie</span><span class="item-price">370 ₺</span></div>
+                    <div class="item-desc">Bol Antep fıstıklı, dışı kıtır içi yumuşak özel tarif kurabiye.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Snickers</span><span class="item-price">460 ₺</span></div>
+                    <div class="item-desc">Kakaolu pandispanya, karamel ve kavrulmuş bademin sütlü çikolata ile buluştuğu yoğun lezzet.</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-header"><span class="item-title">Raspberry</span><span class="item-price">480 ₺</span></div>
+                    <div class="item-desc">Ahududu dolgulu özel tatlı, ruby çikolata kaplamasıyla meyvemsi ve hafif ekşi bir lezzet sunar.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-wrapper" id="kahvalti">
+            <h2 class="section-title">Kahvaltı | Breakfast</h2>
+            <div class="menu-items-grid" style="margin-bottom:25px;">
+                <div class="item-card"><div class="item-header"><span class="item-title">Maison Kahvaltı Tabağı</span><span class="item-price">1.150 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Maison Çift Kişilik Kahvaltı</span><span class="item-price">2.200 ₺</span></div></div>
+            </div>
+
+            <h2 class="section-title">Kruvasan</h2>
+            <div class="menu-items-grid">
+                <div class="item-card"><div class="item-header"><span class="item-title">Sade Kruvasan</span><span class="item-price">350 ₺</span></div></div>
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Hindi Füme Kruvasan</span><span class="item-price">550 ₺</span></div>
+                    <div class="item-desc">Cheddar peyniri, labne, hindi füme, roka, kuru domates</div>
+                </div>
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Üç Peynirli Kruvasan</span><span class="item-price">550 ₺</span></div>
+                    <div class="item-desc">Beyaz peynir, kaşar peyniri, cheddar peyniri</div>
+                </div>
+                <div class="item-card kids-fav">
+                    <div class="item-header"><span class="item-title">Avokadolu Kruvasan</span><span class="item-price">580 ₺</span></div>
+                    <div class="item-desc">Avokado, kaşar peyniri, pesto sos, labne, roka, kuru domates</div>
+                </div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Çikolatalı Kruvasan</span><span class="item-price">420 ₺</span></div></div>
+                <div class="item-card"><div class="item-header"><span class="item-title">Meyveli Çikolatalı Kruvasan</span><span class="item-price">590 ₺</span></div></div>
+            </div>
+        </section>
+
+        <div class="allergen-box">
+            <div class="allergen-title">-- Alerjen Bilgilendirmesi --</div>
+            <div class="allergen-desc">Ürünlerimizin içeriğindeki Gluten, Süt Ürünleri, Yumurta, Kuruyemiş, Fıstık ve Susam gibi alerjen bileşenler hakkında detaylı bilgi için lütfen personelimize danışınız.</div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>🏡 Petit Maison - Evimize Hoş Geldiniz</p>
+        <a href="https://instagram.com/petitmaison" target="_blank" class="footer-insta">@petitmaison</a>
+    </footer>
+
+    <script>
+        function scrollToSec(id) {
+            const el = document.getElementById(id);
+            const offset = 75;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elRect = el.getBoundingClientRect().top;
+            const elPos = elRect - bodyRect;
+            const offsetPos = elPos - offset;
+
+            window.scrollTo({ top: offsetPos, behavior: "smooth" });
+        }
+
+        window.addEventListener('scroll', () => {
+            const secs = document.querySelectorAll('.section-wrapper');
+            const scrollPos = window.pageYOffset + 100;
+
+            secs.forEach(sec => {
+                if (scrollPos >= sec.offsetTop && scrollPos < (sec.offsetTop + sec.offsetHeight)) {
+                    const id = sec.getAttribute('id');
+                    document.querySelectorAll('.nav-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('onclick').includes(id)) { btn.classList.add('active'); }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
