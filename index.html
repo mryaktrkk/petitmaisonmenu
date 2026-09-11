@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petit Maison - Café & Kids Play Dijital Menü</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -170,67 +169,71 @@
             position: relative;
             overflow: hidden;
         }
-        
-        .play-zone-container::before {
-            content: '🧸';
-            position: absolute;
-            font-size: 4.5rem;
-            opacity: 0.06;
-            right: -10px;
-            bottom: -10px;
-        }
 
         .play-zone-title {
             font-family: 'Marcellus', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #A47B56;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
         }
 
         .play-zone-subtitle {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             font-weight: 500;
         }
 
-        .play-cards {
-            display: flex;
+        .play-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-bottom: 15px;
         }
 
         .play-card {
-            flex: 1;
-            padding: 15px 10px;
+            padding: 14px 10px;
             border-radius: 16px;
             background: #FDFBF7;
             border: 1px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .play-card.duration-30 { border-color: var(--bear-brown); }
-        .play-card.duration-60 { border-color: var(--primary-green); }
+        .play-card.duration-60 { border-color: #D36B58; }
+        .play-card.duration-90 { border-color: var(--primary-green); }
+        .play-card.duration-unlimited { border-color: #D36B58; }
 
         .card-time {
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .card-price {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-dark);
         }
 
         .play-notice {
+            font-size: 0.8rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            background: #F4F7F5;
+            padding: 9px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .play-tagline {
             font-size: 0.75rem;
             color: var(--text-muted);
-            font-weight: 500;
-            background: #F4F7F5;
-            padding: 8px;
-            border-radius: 10px;
+            font-weight: 400;
         }
 
         .nav-scroll {
@@ -446,8 +449,9 @@
     <!-- Oyun Alanı Kartı -->
     <div class="play-zone-container">
         <div class="play-zone-title">Oyun Alanı</div>
-        <div class="play-zone-subtitle">2 - 7 Yaş Çocuklar İçin</div>
-        <div class="play-cards">
+        <div class="play-zone-subtitle">♡ 2 - 7 Yaş Çocuklar İçin ♡</div>
+        
+        <div class="play-cards-grid">
             <div class="play-card duration-30">
                 <div class="card-time">⏱ 30 Dakika</div>
                 <div class="card-price">250 ₺</div>
@@ -456,8 +460,18 @@
                 <div class="card-time">⏱ 60 Dakika</div>
                 <div class="card-price">400 ₺</div>
             </div>
+            <div class="play-card duration-90">
+                <div class="card-time">⏱ 90 Dakika</div>
+                <div class="card-price">600 ₺</div>
+            </div>
+            <div class="play-card duration-unlimited">
+                <div class="card-time">♾ Sınırsız</div>
+                <div class="card-price">750 ₺</div>
+            </div>
         </div>
+
         <div class="play-notice">💁‍♀️ Oyun Ablası Eşliğinde Hizmet Verilmektedir.</div>
+        <div class="play-tagline">Çocuklarınız güvende, siz rahatça kahvenizin keyfini çıkarın. ♡</div>
     </div>
 
     <!-- Kategori Seçimi -->
