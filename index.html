@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -119,4 +119,220 @@ DOCTYPE html>
         header {
             text-align: center;
             padding: 10px 20px 20px 20px;
-            background: linear-gradient(180deg, #E2
+            background: linear-gradient(180deg, #E2ECE6 0%, var(--accent-cream) 100%);
+        }
+
+        .logo-title {
+            font-family: 'Marcellus', serif;
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .header-decor {
+            margin: 15px auto;
+            width: 100px;
+            height: 1px;
+            background-color: var(--primary-green);
+            position: relative;
+        }
+        .header-decor::after {
+            content: '🧸';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-cream);
+            padding: 0 8px;
+            font-size: 1rem;
+        }
+
+        .play-zone-container {
+            margin: 15px 20px 25px 20px;
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(46, 90, 68, 0.04);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-zone-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.5rem;
+            color: #A47B56;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .play-zone-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .play-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .play-card {
+            padding: 14px 10px;
+            border-radius: 16px;
+            background: #FDFBF7;
+            border: 1px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-card.duration-30 { border-color: var(--bear-brown); }
+        .play-card.duration-60 { border-color: #D36B58; }
+        .play-card.duration-90 { border-color: var(--primary-green); }
+        .play-card.duration-unlimited { border-color: #D36B58; }
+
+        .card-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .card-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .play-notice {
+            font-size: 0.8rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            background: #F4F7F5;
+            padding: 9px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .play-tagline {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .nav-scroll {
+            position: sticky;
+            top: 0;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(46, 90, 68, 0.05);
+        }
+
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0 20px;
+            gap: 8px;
+            scrollbar-width: none;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .nav-btn {
+            background: white;
+            border: 1px solid rgba(46, 90, 68, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.active {
+            background-color: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(46, 90, 68, 0.15);
+        }
+
+        .menu-container {
+            padding: 10px 20px 60px 20px;
+        }
+
+        .section-wrapper {
+            margin-bottom: 35px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '🐻';
+            font-size: 1.1rem;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .menu-items-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .item-card {
+            background: white;
+            padding: 16px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.01);
+            border: 1px solid rgba(46, 90, 68, 0.03);
+            position: relative;
+        }
+
+        .item-card.kids-fav::before {
+            content: '🐾';
+            position: absolute;
+            left: -6px;
+            top: -6px;
+            font-size: 1rem;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align
